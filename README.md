@@ -1,31 +1,25 @@
-# REAL OPS V0.3
+# REAL OPS V0.4
 
-Prototype web autonome d'environnement d'opérations aériennes pour le projet REAL OPS.
+Prototype web de simulation des communications opérationnelles pour accompagner une session de simulation de vol.
 
-## Nouveautés V0.3
-- Trois identités vocales indépendantes : commandant, copilote et personnel cabine.
-- Sélection de voix installées sur l'appareil, débit et hauteur par rôle.
-- Profil vocal ATC séparé et style radio ralenti.
-- Échanges cockpit alternant commandant et copilote.
-- Dialogues bilingues français / anglais.
-- Scénarios et événements contextuels : turbulences, météo dégradée, retard, changement de piste, passager malade, anomalie technique.
-- Briefing équipage, briefing cabine et débriefing.
-- Journal horodaté exportable en fichier texte.
-- Interface responsive mobile / ordinateur.
+## Nouveautés V0.4
+- Moteur de scénario démarrable/arrêtable.
+- Déclenchement automatique optionnel d'événements en fonction de la phase sélectionnée.
+- Réglage de fréquence des événements et niveau de difficulté.
+- Transferts ATC simulés lors du passage entre phases.
+- Niveau de vigilance affiché selon le nombre d'événements.
+- Conservation des profils vocaux, échanges bilingues, journal exportable et interface responsive de V0.3.
 
-## Mise à jour du dépôt GitHub
-1. Ouvrir https://github.com/merreaniss-web/R-AL-OPS
-2. Ouvrir `index.html`, puis **Edit this file**.
-3. Remplacer intégralement le contenu par le fichier `index.html` de cette livraison.
-4. Cliquer sur **Commit changes** sur la branche `main`.
-5. Mettre également à jour `README.md`.
+## Installation
+1. Décompresser l'archive.
+2. Ouvrir `index.html` dans un navigateur récent.
+3. Autoriser la synthèse vocale si le navigateur le demande.
+4. Pour GitHub Pages : déposer `index.html` et `README.md` à la racine de la branche `main`.
 
-L'archive ne pousse pas automatiquement les modifications sur GitHub.
-
-## Audio : limite connue
-Les profils utilisent `SpeechSynthesis` et les voix présentes sur le terminal. Le choix, la disponibilité, le rendu et le comportement dépendent du navigateur et du système. Il ne s'agit pas de voix IA distantes ni d'enregistrements professionnels. Pour un rendu réellement naturel, il faudra intégrer un moteur vocal dédié ou des voix enregistrées, avec les contraintes réseau, licences, latence et distribution correspondantes.
-
-## Compatibilité simulateur : limite connue
-Cette version est un prototype web autonome. Elle ne lit pas les variables de simulation MSFS 2024, ne se connecte pas à SimConnect, ne contrôle pas l'ATC natif et ne transmet pas de communications radio. Les phases sont sélectionnées dans l'interface. Les données, clairances, fréquences et procédures sont fictives : ne pas utiliser en vol réel.
-
-La cible finale MSFS 2024 sur Xbox nécessite une architecture d'intégration et une voie de distribution autorisées et compatibles avec les contraintes Xbox / Marketplace. Une page HTML autonome ne peut pas, à elle seule, remplacer l'ATC intégré au simulateur.
+## Limites importantes
+- Aucune connexion à MSFS 2024, SimConnect, SimVars ou à la télémétrie de vol.
+- Aucune transmission radio réelle et aucun remplacement de l'ATC natif.
+- Les phases sont sélectionnées manuellement.
+- Les voix dépendent de la synthèse vocale installée sur l'appareil.
+- Les clairances, fréquences, transferts et procédures sont fictifs : usage simulation/démonstration uniquement, jamais en vol réel.
+- Le prototype est une page web. Il ne devient pas une application Xbox native par simple dépôt GitHub.

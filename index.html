@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071321">
-<title>REAL OPS — V0.3</title>
+<title>REAL OPS — V0.4</title>
 <style>
 :root{--bg:#071321;--surface:#0d1d30;--surface2:#11263d;--surface3:#081827;--line:#243e59;--text:#edf5ff;--muted:#94a9c1;--cyan:#54d8e8;--green:#69d9a6;--amber:#ffc77b;--red:#ff818b;--purple:#b6a1ff;--shadow:0 18px 45px #0004}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% -15%,#1c405c 0,transparent 42%),var(--bg);color:var(--text);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
@@ -35,12 +35,12 @@ footer{text-align:center;color:#71869f;font-size:9px;padding:20px 10px}
 <body>
 <header>
  <div class="brand"><div class="logo">RO</div><div><b>REAL OPS</b><small>REALISTIC OPERATIONS ENVIRONMENT</small></div></div>
- <div class="header-right"><span class="status" id="sessionStatus">● SESSION ACTIVE</span><span class="version">BUILD 0.3.0</span></div>
+ <div class="header-right"><span class="status" id="sessionStatus">● SESSION ACTIVE</span><span class="version">BUILD 0.4.0</span></div>
 </header>
 <main>
 <section class="hero">
- <div><div class="eyebrow">FLIGHT OPERATIONS · HUMAN CREW · ATC ENVIRONMENT</div><h1>Operations that feel alive.</h1><p>Une couche de simulation opérationnelle bilingue : équipage à personnalités distinctes, communications contextuelles, événements adaptatifs et profils vocaux par rôle.</p></div>
- <div class="hero-note">MSFS 2024 · Prototype de pré-intégration<br>Interface FR / EN</div>
+ <div><div class="eyebrow">FLIGHT OPERATIONS · HUMAN CREW · ATC ENVIRONMENT</div><h1>Operations that feel alive.</h1><p>Une couche de simulation opérationnelle bilingue : équipage à personnalités distinctes, communications contextuelles, événements adaptatifs et profils vocaux par rôle, événements adaptatifs et moteur de scénario automatisé.</p></div>
+ <div class="hero-note">MSFS 2024 · Prototype V0.4 pré-intégration<br>Interface FR / EN</div>
 </section>
 <nav class="tabs">
  <button class="tab active" data-tab="ops">Vue opérations</button>
@@ -76,6 +76,9 @@ footer{text-align:center;color:#71869f;font-size:9px;padding:20px 10px}
     </div>
    </section>
    <section class="card">
+    <div class="prompt"><b>MODE SIMULATION UNIQUEMENT</b> — Les clairances, fréquences, procédures et événements sont fictifs. Ne pas les utiliser en vol réel ni les considérer comme des instructions aéronautiques.</div>
+   </section>
+   <section class="card">
     <div class="card-head"><h2>Communications en temps réel</h2><div class="actions" style="margin:0"><button class="btn ghost" id="pauseSpeech">Pause voix</button><button class="btn ghost" id="clearLog">Effacer</button></div></div>
     <div class="log" id="log" aria-live="polite"><div class="empty" id="emptyLog">Aucune communication pour le moment.<br>Déclenche une interaction pour lancer l'échange.</div></div>
    </section>
@@ -87,7 +90,8 @@ footer{text-align:center;color:#71869f;font-size:9px;padding:20px 10px}
     <div class="line"><span>Copilote</span><b class="green">EN SERVICE</b></div>
     <div class="line"><span>Personnel cabine</span><b class="green">EN SERVICE</b></div>
     <div class="line"><span>Contrôle aérien</span><b>SCÉNARISÉ</b></div>
-    <div class="line"><span>Événements actifs</span><b id="activeEvents">0</b></div>
+    <div class="line"><span>Événements déclenchés</span><b id="activeEvents">0</b></div>
+    <div class="line"><span>Niveau de vigilance</span><b id="alertLevel" class="green">NORMAL</b></div>
     <div class="line"><span>Voix disponibles</span><b id="voiceCount">Recherche…</b></div>
    </section>
    <section class="card">
@@ -142,6 +146,16 @@ footer{text-align:center;color:#71869f;font-size:9px;padding:20px 10px}
     <p class="tiny">Les dialogues tiennent compte de la phase sélectionnée, de la langue et du rôle. Les événements sont ajoutés au journal et peuvent déclencher une réponse de l'équipage et de la cabine.</p>
     <div class="actions"><button class="btn primary" id="startBriefing">Lancer briefing équipage</button><button class="btn" id="startCabinBriefing">Briefing cabine</button><button class="btn" id="startDebrief">Débriefing de vol</button></div>
     <div class="timeline" id="scenarioTimeline" style="margin-top:15px"><div class="timeline-item"><div class="timeline-time">PRÊT</div><div class="timeline-content">Le scénario attend une action.</div></div></div>
+   </section>
+   <section class="card">
+    <div class="card-head"><h2>Automatisation du scénario</h2><span class="tag">V0.4</span></div>
+    <div class="switchrow"><span>Déclencher des événements contextuels automatiquement</span><input id="autoEvents" type="checkbox"></div>
+    <div class="fields">
+     <div class="field"><label>FRÉQUENCE DES ÉVÉNEMENTS</label><select id="eventFrequency"><option value="low">Faible</option><option value="normal" selected>Normale</option><option value="high">Élevée</option></select></div>
+     <div class="field"><label>NIVEAU DE DIFFICULTÉ</label><select id="difficulty"><option value="easy">Découverte</option><option value="normal" selected>Standard</option><option value="hard">Avancé</option></select></div>
+    </div>
+    <div class="actions"><button class="btn primary" id="startScenario">▶ Démarrer le scénario</button><button class="btn ghost" id="stopScenario">■ Arrêter</button><span class="tiny" id="scenarioState">Scénario en attente</span></div>
+    <p class="tiny">Les événements automatiques sont des déclencheurs de démonstration, indépendants des données réelles de MSFS.</p>
    </section>
    <section class="card"><div class="card-head"><h2>Déclencheurs d'événements</h2></div>
     <div class="event-grid">
@@ -264,7 +278,12 @@ function renderPhases(){
  PHASES.forEach((p,i)=>{const b=document.createElement("button");b.className="phase"+(i===phaseIndex?" active":i<phaseIndex?" done":"");b.textContent=lang()==="fr"?p.fr:p.en;b.onclick=()=>selectPhase(i);$("phaseButtons").append(b)});
  $("phaseMetric").textContent=lang()==="fr"?phase().fr:phase().en;$("speedMetric").innerHTML=phase().speed+' <small>kt</small>';$("altMetric").innerHTML=phase().alt.toLocaleString()+' <small>ft</small>';$("freqMetric").textContent=phase().freq;$("phaseTag").textContent=`PHASE ${String(phaseIndex+1).padStart(2,"0")} / ${String(PHASES.length).padStart(2,"0")}`;
 }
-function selectPhase(i){phaseIndex=i;renderPhases();addMessage("system",textPair("Phase sélectionnée : "+phase().fr,"Selected phase: "+phase().en));}
+function selectPhase(i){
+ const previous=phaseIndex;phaseIndex=i;renderPhases();
+ addMessage("system",textPair("Phase sélectionnée : "+phase().fr,"Selected phase: "+phase().en));
+ if(i!==previous && Math.abs(i-previous)===1)phaseHandoff();
+ if(scenarioRunning && $("autoEvents")?.checked && autoEventTimer){clearTimeout(autoEventTimer);autoEventTimer=setTimeout(runAutomaticEvent,12000);}
+}
 function atcExchange(){
  const call=$("callsign").value.trim()||"Aircraft";const route=$("route").value.trim();
  const lines=phase().atc.map(x=>textPair(x[0].replaceAll("Transavia 1234",call),x[1].replaceAll("Transavia 1234",call)));
@@ -282,11 +301,68 @@ function cabinCall(){
 }
 function triggerEvent(id){
  const ev=EVENTS[id];if(!ev)return;eventCount++;$("activeEvents").textContent=eventCount;
- const p=phase().id;const context=ev.phases.includes(p)?textPair("Événement cohérent avec la phase actuelle.","Event is consistent with the current phase.") : textPair("Événement déclenché hors phase habituelle : scénario forcé.","Event triggered outside its usual phase: forced scenario.");
+ const p=phase().id;updateAlert();addTimeline("Événement : "+ev.name,phase().fr+" · vigilance "+(EVENT_SEVERITY[id]||1)+"/3");const context=ev.phases.includes(p)?textPair("Événement cohérent avec la phase actuelle.","Event is consistent with the current phase.") : textPair("Événement déclenché hors phase habituelle : scénario forcé.","Event triggered outside its usual phase: forced scenario.");
  addMessage("event",textPair("ÉVÉNEMENT : "+ev.name,"EVENT: "+ev.name),context);
  const messages=ev[lang()];
  ev.roles.forEach((role,i)=>setTimeout(()=>addMessage(role,messages[i],textPair("Réponse contextuelle · "+phase().fr,"Contextual response · "+phase().en)),450*(i+1)));
 }
+
+// REAL OPS V0.4 — scenario scheduler and operational context engine.
+// Timers only create fictional training prompts; they never read or control MSFS.
+let scenarioTimer=null, scenarioRunning=false, autoEventTimer=null, scenarioStep=0;
+const AUTO_EVENT_POOL={
+ park:["delay","runway"], taxi:["runway","technical"], takeoff:["technical","weather"],
+ climb:["weather","turbulence"], cruise:["turbulence","weather","medical"],
+ approach:["weather","runway","medical"], landing:["technical"], parked:["delay"]
+};
+const EVENT_SEVERITY={turbulence:2,weather:2,delay:1,runway:2,medical:3,technical:3};
+function updateAlert(){
+ const sev=Math.max(0,...Object.keys(EVENT_SEVERITY).filter(k=>EVENT_SEVERITY[k] && eventCount>0).map(k=>0));
+ const level=eventCount>=3?"ÉLEVÉ":eventCount>=1?"ATTENTION":"NORMAL";
+ const el=$("alertLevel"); if(el){el.textContent=lang()==="fr"?level:(level==="ÉLEVÉ"?"HIGH":level==="ATTENTION"?"CAUTION":"NORMAL");el.className=eventCount>=3?"amber":eventCount>=1?"amber":"green";}
+}
+function chooseContextEvent(){
+ const pool=AUTO_EVENT_POOL[phase().id]||[];
+ if(!pool.length)return null;
+ const diff=$("difficulty")?.value||"normal";
+ let candidates=pool.slice();
+ if(diff==="easy")candidates=candidates.filter(x=>x!=="technical"&&x!=="medical");
+ if(!candidates.length)candidates=pool;
+ return candidates[Math.floor(Math.random()*candidates.length)];
+}
+function runAutomaticEvent(){
+ if(!scenarioRunning||!$("autoEvents")?.checked)return;
+ const id=chooseContextEvent();
+ if(id)triggerEvent(id);
+ const freq=$("eventFrequency")?.value||"normal";
+ const delay=freq==="low"?90000:freq==="high"?30000:60000;
+ autoEventTimer=setTimeout(runAutomaticEvent,delay);
+}
+function startScenario(){
+ stopScenario(false);scenarioRunning=true;scenarioStep=0;
+ $("scenarioState").textContent=textPair("Scénario actif · progression manuelle","Scenario active · manual progression");
+ $("sessionStatus").textContent="● SCENARIO RUNNING";
+ addMessage("system",textPair("Scénario V0.4 démarré. Les échanges restent fictifs et indépendants du simulateur.","V0.4 scenario started. All exchanges remain fictional and independent from the simulator."));
+ addTimeline("Démarrage scénario", $("route").value+" · "+$("aircraft").value);
+ if($("autoEvents").checked)runAutomaticEvent();
+}
+function stopScenario(log=true){
+ scenarioRunning=false;
+ if(autoEventTimer)clearTimeout(autoEventTimer);autoEventTimer=null;
+ if($("scenarioState"))$("scenarioState").textContent=textPair("Scénario arrêté","Scenario stopped");
+ if($("sessionStatus"))$("sessionStatus").textContent="● SESSION ACTIVE";
+ if(log)addMessage("system",textPair("Scénario arrêté.","Scenario stopped."));
+}
+function phaseHandoff(){
+ const handoffs=[
+  ["Sol → Tour","Ground → Tower"],["Tour → Départ","Tower → Departure"],["Départ → Centre","Departure → Centre"],
+  ["Centre → Approche","Centre → Approach"],["Approche → Tour","Approach → Tower"],["Tour → Sol","Tower → Ground"],["Sol → Parking","Ground → Stand"]
+ ];
+ const h=handoffs[Math.min(phaseIndex,handoffs.length-1)];
+ addMessage("atc",textPair("Transfert de fréquence simulé : "+h[0]+". Vérifiez toujours les fréquences et instructions réelles dans le simulateur.","Simulated frequency handoff: "+h[1]+". Always verify real frequencies and instructions in the simulator."));
+ addTimeline("Transfert ATC",h[0]);
+}
+
 function addTimeline(label,detail){const item=document.createElement("div");item.className="timeline-item";const tm=document.createElement("div");tm.className="timeline-time";tm.textContent=new Date().toLocaleTimeString(lang()==="fr"?"fr-FR":"en-GB",{hour:"2-digit",minute:"2-digit"});const d=document.createElement("div");d.className="timeline-content";d.textContent=label+" — "+detail;item.append(tm,d);$("scenarioTimeline").prepend(item)}
 function briefing(){const a=lang()==="fr"?["Briefing équipage : route "+$("route").value+". Vérifions ensemble les éléments de départ.","Je prends les points opérationnels. Signale-moi tout élément qui nécessite une vérification.","Bien reçu. Je suis prêt à poursuivre le scénario."]:["Crew briefing: route "+$("route").value+". Let's review the departure items together.","I'll cover the operational points. Flag anything that needs verification.","Roger. I'm ready to continue the scenario."];addMessage("captain",a[0]);setTimeout(()=>addMessage("copilot",a[1]),650);setTimeout(()=>addMessage("captain",a[2]),1300);addTimeline("Briefing équipage",$("route").value)}
 function cabinBriefing(){const t=textPair("Cabine, nous préparons le départ. Vérifiez la cabine et confirmez lorsque l'équipe est prête.","Cabin crew, we're preparing for departure. Check the cabin and confirm when the team is ready.");addMessage("cabin",t);setTimeout(()=>addMessage("captain",textPair("Merci. Tenez-nous informés de tout point nécessitant notre attention.","Thank you. Let us know if anything requires our attention.")),600);addTimeline("Briefing cabine",phase().fr)}
@@ -305,14 +381,17 @@ function loadVoices(){
 }
 function updateCheck(){const checks=[...$("checklist").querySelectorAll("input")],n=checks.filter(x=>x.checked).length;$("checkCount").textContent=n+" / "+checks.length;$("checkProgress").style.width=(n/checks.length*100)+"%"}
 function exportTranscript(){
- const lines=["REAL OPS V0.3 — JOURNAL DE SESSION","Route : "+$("route").value,"Appareil : "+$("aircraft").value,"Export : "+new Date().toLocaleString(),"",""];
+ const lines=["REAL OPS V0.4 — JOURNAL DE SESSION","Route : "+$("route").value,"Appareil : "+$("aircraft").value,"Export : "+new Date().toLocaleString(),"",""];
  transcript.slice().reverse().forEach(x=>lines.push(`[${new Date(x.time).toLocaleTimeString()}] ${x.role} — ${x.message}`));
  const blob=new Blob([lines.join("\n")],{type:"text/plain;charset=utf-8"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="REAL-OPS-journal.txt";a.click();URL.revokeObjectURL(url);
 }
 document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+b.dataset.tab))}));
 $("nextPhase").onclick=()=>{if(phaseIndex<PHASES.length-1){phaseIndex++;renderPhases();addMessage("system",textPair("Passage à la phase : "+phase().fr,"Moving to phase: "+phase().en));}else addMessage("system",textPair("Fin du scénario. Tu peux lancer le débriefing.","Scenario complete. You can start the debrief."))};
+$("startScenario")?.addEventListener("click",startScenario);
+$("stopScenario")?.addEventListener("click",()=>stopScenario());
+$("autoEvents")?.addEventListener("change",()=>{if(!$("autoEvents").checked&&autoEventTimer){clearTimeout(autoEventTimer);autoEventTimer=null;}if($("autoEvents").checked&&scenarioRunning)runAutomaticEvent();});
 $("callAtc").onclick=atcExchange;$("talkCrew").onclick=cockpitExchange;$("callCabin").onclick=cabinCall;
-$("reset").onclick=()=>{phaseIndex=0;eventCount=0;$("activeEvents").textContent="0";transcript=[];crewTurn=0;$("log").innerHTML='<div class="empty" id="emptyLog">Session réinitialisée. En attente de la première communication.</div>';renderPhases();if(window.speechSynthesis)window.speechSynthesis.cancel();$("sessionStatus").textContent="● SESSION ACTIVE"};
+$("reset").onclick=()=>{stopScenario(false);phaseIndex=0;eventCount=0;$("activeEvents").textContent="0";updateAlert();transcript=[];crewTurn=0;$("log").innerHTML='<div class="empty" id="emptyLog">Session réinitialisée. En attente de la première communication.</div>';renderPhases();if(window.speechSynthesis)window.speechSynthesis.cancel();$("sessionStatus").textContent="● SESSION ACTIVE"};
 $("clearLog").onclick=()=>{$("log").innerHTML='<div class="empty" id="emptyLog">Journal effacé. Les nouvelles communications apparaîtront ici.</div>';transcript=[]};
 document.querySelectorAll("[data-event]").forEach(b=>b.addEventListener("click",()=>triggerEvent(b.dataset.event)));
 $("language").onchange=()=>{renderPhases();loadVoices()};
@@ -323,6 +402,6 @@ document.querySelectorAll("[data-test-voice]").forEach(b=>b.onclick=()=>{const r
 ["Captain","Copilot","Cabin"].forEach(role=>["rate","pitch"].forEach(kind=>{const el=$(`${kind}${role}`);el.addEventListener("input",()=> $(`${kind}${role}Out`).textContent=Number(el.value).toFixed(2))}));
 $("checklist").addEventListener("change",updateCheck);
 if(window.speechSynthesis){window.speechSynthesis.onvoiceschanged=loadVoices;loadVoices()}else loadVoices();
-renderPhases();updateCheck();
+renderPhases();updateCheck();updateAlert();
 </script>
 </body></html>
