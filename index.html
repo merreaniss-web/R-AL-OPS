@@ -1,59 +1,328 @@
 <!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07111e"><title>REAL OPS CORE 0.2</title>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071321">
+<title>REAL OPS — V0.3</title>
 <style>
-:root{--bg:#07111e;--p:#102139;--p2:#0b192b;--line:#29425e;--t:#eef5ff;--m:#9aadc4;--c:#55d8e8;--g:#64dda5;--a:#ffc878;--r:#ff858b}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#1a3b56,transparent 42%),var(--bg);color:var(--t);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-header,main{max-width:1200px;margin:auto}header{padding:18px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.brand{display:flex;gap:11px;align-items:center}.logo{width:42px;height:42px;border:1px solid #3e7186;background:#12344a;border-radius:12px;display:grid;place-items:center;color:var(--c);font-weight:900}.brand b{letter-spacing:2px}.brand small{display:block;color:var(--m);font-size:9px;letter-spacing:2px}.pill{border:1px solid #285c4a;background:#102c29;color:var(--g);border-radius:30px;padding:6px 10px;font-size:10px}
-main{padding:22px 20px 40px}.intro{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:8px 0 20px}.kicker{color:var(--c);font-size:10px;letter-spacing:2px;font-weight:800}h1{font-size:clamp(28px,5vw,42px);line-height:1.06;margin:7px 0}p{color:var(--m);margin:0}.version{border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:10px;white-space:nowrap}
-.layout{display:grid;grid-template-columns:1.35fr .8fr;gap:14px}.left,.right{display:grid;align-content:start;gap:14px}.card{background:linear-gradient(145deg,#11243aee,#0b1929f2);border:1px solid var(--line);border-radius:15px;padding:16px;box-shadow:0 16px 40px #0003}.head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:13px}h2{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;margin:0;color:#d3e2f3}.sub{font-size:10px;color:var(--m);font-weight:400;letter-spacing:0;text-transform:none}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.metric{background:#091727;border:1px solid #203852;border-radius:10px;padding:10px}.metric span{display:block;color:var(--m);font-size:9px;text-transform:uppercase;letter-spacing:1px}.metric b{font-size:19px;display:block;margin-top:4px}.metric small{font-size:10px;color:var(--m)}
-.fields{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.field label{display:block;color:var(--m);font-size:10px;margin-bottom:4px}.field input,.field select,.audio select{width:100%;background:#081626;color:var(--t);border:1px solid #2b435e;border-radius:8px;padding:10px}
-.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:13px}.phase{border:1px solid #2a405a;background:#0b1a2b;color:#8ea4bd;padding:8px 4px;border-radius:8px;font-size:10px}.phase.active{border-color:var(--c);background:#123343;color:#dffbff}.phase.done{border-color:#28674e;color:var(--g)}
-.actions,.audio{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px;align-items:center}.btn{border:1px solid #35516d;background:#19344d;color:var(--t);padding:10px 12px;border-radius:8px;font-weight:700;font-size:11px}.btn.primary{background:var(--c);color:#06212b;border-color:var(--c)}.btn.alt{background:#13283d}.btn.warn{color:var(--a);border-color:#72542c;background:#302719}
-.log{height:310px;overflow:auto;display:flex;flex-direction:column;gap:8px}.entry{background:#091827;border:1px solid #223a55;border-radius:10px;padding:10px}.top{display:flex;justify-content:space-between;color:var(--m);font-size:9px;text-transform:uppercase}.speaker{font-weight:800;color:var(--c)}.crew .speaker{color:var(--g)}.cabin .speaker{color:var(--a)}.event .speaker{color:var(--r)}.entry p{font-size:12px;color:var(--t);margin-top:5px}.empty{text-align:center;color:var(--m);padding:45px 10px;font-size:12px}
-.rowline{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid #20364f;font-size:11px}.rowline:last-child{border:0}.rowline span{color:var(--m)}.rowline b{color:var(--c)}.events{display:grid;grid-template-columns:1fr 1fr;gap:7px}.events button{text-align:left;min-height:42px}.checks{display:grid;gap:8px}.check{display:flex;gap:8px;font-size:11px;color:#c9d8e9}.check input{accent-color:var(--g);margin-top:3px}.notice{font-size:10px;color:var(--m);margin-top:10px}
-footer{text-align:center;color:#71869f;font-size:9px;padding:22px}
-@media(max-width:780px){header{padding:14px}.intro{display:block}.version{display:inline-block;margin-top:12px}.layout{grid-template-columns:1fr}main{padding:17px 12px 35px}.metrics{grid-template-columns:repeat(2,1fr)}.log{height:250px}}
-</style></head><body>
-<header><div class="brand"><div class="logo">RO</div><div><b>REAL OPS</b><small>REALISTIC OPERATIONS CORE</small></div></div><span class="pill">● CORE 0.2 · DEMO</span></header>
-<main><section class="intro"><div><div class="kicker">FLIGHT OPERATIONS · ATC · FLIGHT & CABIN CREW</div><h1>Une opération.<br>Un équipage vivant.</h1><p>Prototype bilingue avec communications contextuelles, événements de vol et lecture vocale du navigateur.</p></div><span class="version">MSFS 2024 · PRÉ-INTÉGRATION</span></section>
-<div class="layout"><div class="left">
-<section class="card"><div class="head"><h2>Situation du vol <span class="sub">/ démonstration</span></h2><span class="pill">SESSION ACTIVE</span></div>
-<div class="metrics"><div class="metric"><span>Phase</span><b id="phaseValue">Parking</b></div><div class="metric"><span>Vitesse</span><b id="speedValue">0 <small>kt</small></b></div><div class="metric"><span>Altitude</span><b id="altValue">0 <small>ft</small></b></div><div class="metric"><span>Service</span><b id="serviceValue">Sol</b></div></div>
-<div class="fields"><div class="field"><label>LANGUE</label><select id="language"><option value="fr">Français</option><option value="en">English</option></select></div><div class="field"><label>APPAREIL</label><select id="aircraft"><option>Airbus A320</option><option>Boeing 737</option><option>Avion léger</option><option>Autre avion</option></select></div><div class="field"><label>INDICATIF</label><input id="callsign" value="Transavia 1234"></div><div class="field"><label>ROUTE</label><input id="route" value="LFMT → LFPO"></div></div>
-<div class="phases" id="phases"></div><div class="actions"><button class="btn primary" id="next">Phase suivante →</button><button class="btn" id="atc">📡 Appel ATC</button><button class="btn" id="crew">👨‍✈️ Équipage</button><button class="btn" id="cabin">🛫 Personnel cabine</button><button class="btn alt" id="reset">Réinitialiser</button></div>
+:root{--bg:#071321;--surface:#0d1d30;--surface2:#11263d;--surface3:#081827;--line:#243e59;--text:#edf5ff;--muted:#94a9c1;--cyan:#54d8e8;--green:#69d9a6;--amber:#ffc77b;--red:#ff818b;--purple:#b6a1ff;--shadow:0 18px 45px #0004}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% -15%,#1c405c 0,transparent 42%),var(--bg);color:var(--text);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}
+header{max-width:1380px;margin:auto;padding:17px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #24394f}
+.brand{display:flex;align-items:center;gap:11px}.logo{width:44px;height:44px;border:1px solid #39758a;border-radius:13px;background:linear-gradient(145deg,#17435a,#0c1d31);display:grid;place-items:center;color:var(--cyan);font-weight:950;letter-spacing:-2px;font-size:17px}.brand b{letter-spacing:2.3px;font-size:16px}.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:2px}
+.header-right{display:flex;align-items:center;gap:9px}.status{border:1px solid #28664f;background:#102d29;color:var(--green);border-radius:30px;padding:6px 10px;font-size:9px;letter-spacing:1px}.version{font-size:10px;color:#bed0e3;border:1px solid var(--line);padding:7px 10px;border-radius:8px}
+main{max-width:1380px;margin:auto;padding:22px 22px 42px}.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin:7px 0 20px}.eyebrow{color:var(--cyan);font-size:10px;letter-spacing:2px;font-weight:850}.hero h1{font-size:clamp(29px,4.6vw,43px);line-height:1.04;margin:7px 0}.hero p{color:var(--muted);max-width:700px;margin:0}.hero-note{color:#9fb6cd;font-size:10px;max-width:200px;text-align:right}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}.tab{border:1px solid var(--line);background:#0b1a2b;color:var(--muted);padding:9px 13px;border-radius:9px;font-size:11px;font-weight:750}.tab.active{border-color:#327a8b;background:#123447;color:#e4fbff}
+.page{display:none}.page.active{display:block}.grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.75fr);gap:14px}.col{display:grid;align-content:start;gap:14px}.card{background:linear-gradient(145deg,#11253bee,#0b1a2bf5);border:1px solid var(--line);border-radius:15px;padding:16px;box-shadow:var(--shadow)}.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}.card h2{margin:0;font-size:11px;text-transform:uppercase;letter-spacing:1.25px;color:#d7e5f5}.muted{color:var(--muted)}.tiny{font-size:10px;color:var(--muted)}.tag{font-size:9px;color:var(--cyan);border:1px solid #28586b;background:#102b3a;padding:4px 7px;border-radius:30px;white-space:nowrap}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.metric{background:var(--surface3);border:1px solid #203954;border-radius:10px;padding:10px}.metric span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:1px}.metric b{display:block;font-size:19px;margin-top:4px;font-variant-numeric:tabular-nums}.metric small{font-size:10px;color:var(--muted);font-weight:500}
+.fields{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:12px}.field label{display:block;color:var(--muted);font-size:9px;letter-spacing:.6px;margin-bottom:5px}.field input,.field select,.select{width:100%;background:#081727;border:1px solid #2b4561;border-radius:8px;color:var(--text);padding:10px;min-width:0}
+.phases{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:13px}.phase{border:1px solid #2a405a;background:#0a192a;color:#8ea5bd;padding:9px 4px;border-radius:8px;font-size:9px}.phase.active{border-color:var(--cyan);background:#123746;color:#e2fbff}.phase.done{border-color:#28684e;color:var(--green)}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}.btn{border:1px solid #35516d;background:#19344d;color:var(--text);padding:9px 12px;border-radius:8px;font-size:10px;font-weight:800}.btn.primary{background:var(--cyan);border-color:var(--cyan);color:#06212b}.btn.ghost{background:#102238}.btn.warning{border-color:#73552f;color:var(--amber);background:#302619}.btn.danger{border-color:#703b47;color:#ffabb0;background:#321b25}.btn:disabled{opacity:.4;cursor:not-allowed}
+.log{height:390px;overflow:auto;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth}.entry{background:#081827;border:1px solid #223b56;border-radius:10px;padding:10px 11px}.entry-top{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.5px}.speaker{font-weight:850;color:var(--cyan)}.entry.copilot .speaker{color:var(--green)}.entry.captain .speaker{color:#a9c7ff}.entry.cabin .speaker{color:var(--amber)}.entry.atc .speaker{color:var(--purple)}.entry.event .speaker{color:var(--red)}.entry p{font-size:12px;color:#e4edf8;margin:5px 0 0}.entry small{display:block;color:#8299b2;font-size:9px;margin-top:5px}.empty{text-align:center;color:var(--muted);padding:55px 10px;font-size:12px}
+.line{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid #20364e;font-size:10px}.line:last-child{border:0}.line span{color:var(--muted)}.line b{color:var(--cyan)}.line b.green{color:var(--green)}.line b.amber{color:var(--amber)}
+.event-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.event-grid button{text-align:left;min-height:43px}.switchrow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #20364e;font-size:10px}.switchrow:last-child{border:0}.switchrow span{color:var(--muted)}input[type=checkbox]{accent-color:var(--cyan)}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.voice-card{background:#091827;border:1px solid #243e59;border-radius:11px;padding:12px}.voice-card h3{font-size:11px;margin:0 0 9px}.voice-card label{display:block;color:var(--muted);font-size:9px;margin:8px 0 4px}.voice-card select,.voice-card input[type=range]{width:100%;background:#081727;color:var(--text);border:1px solid #2b4561;border-radius:7px;padding:7px}.voice-card input[type=range]{padding:0;accent-color:var(--cyan)}
+.checks{display:grid;gap:8px}.check{display:flex;align-items:flex-start;gap:8px;color:#cad8e8;font-size:10px}.check input{margin-top:3px}
+.progress{height:6px;background:#071522;border-radius:8px;overflow:hidden;margin-top:9px}.progress i{display:block;height:100%;background:linear-gradient(90deg,#40aebf,#6de1b0);width:0;transition:width .2s}
+.prompt{background:#0a1929;border:1px solid #263f5a;border-radius:10px;padding:12px;color:#b8c9dc;font-size:10px}.prompt b{color:var(--cyan)}
+.timeline{display:grid;gap:8px}.timeline-item{display:grid;grid-template-columns:74px 1fr;gap:10px;align-items:start}.timeline-time{font-size:9px;color:var(--cyan);padding-top:3px}.timeline-content{border-left:2px solid #31536e;padding:0 0 9px 11px;font-size:10px;color:#c7d6e7}
+footer{text-align:center;color:#71869f;font-size:9px;padding:20px 10px}
+@media(max-width:850px){header{padding:13px}.hero{display:block}.hero-note{text-align:left;margin-top:10px;max-width:none}.grid{grid-template-columns:1fr}main{padding:17px 12px 35px}.metrics{grid-template-columns:repeat(2,1fr)}.phases{grid-template-columns:repeat(3,1fr)}.log{height:310px}.voice-grid{grid-template-columns:1fr}.version{display:none}}
+@media(max-width:430px){.brand b{font-size:13px}.header-right .status{font-size:8px}.fields{grid-template-columns:1fr 1fr}.actions .btn{flex:1}.card{padding:13px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><div class="logo">RO</div><div><b>REAL OPS</b><small>REALISTIC OPERATIONS ENVIRONMENT</small></div></div>
+ <div class="header-right"><span class="status" id="sessionStatus">● SESSION ACTIVE</span><span class="version">BUILD 0.3.0</span></div>
+</header>
+<main>
+<section class="hero">
+ <div><div class="eyebrow">FLIGHT OPERATIONS · HUMAN CREW · ATC ENVIRONMENT</div><h1>Operations that feel alive.</h1><p>Une couche de simulation opérationnelle bilingue : équipage à personnalités distinctes, communications contextuelles, événements adaptatifs et profils vocaux par rôle.</p></div>
+ <div class="hero-note">MSFS 2024 · Prototype de pré-intégration<br>Interface FR / EN</div>
 </section>
-<section class="card"><div class="head"><h2>Journal des communications</h2><button class="btn alt" id="clear">Effacer</button></div><div class="log" id="log"><div class="empty" id="empty">En attente de la première communication.<br>Déclenche une phase ou un échange.</div></div></section>
-</div><aside class="right">
-<section class="card"><div class="head"><h2>Voix & audio</h2></div><div class="audio"><button class="btn primary" id="voice">🔊 Voix activée</button><label class="sub">Débit</label><select id="rate"><option value=".88">Lent</option><option value="1" selected>Normal</option><option value="1.08">Rapide</option></select></div><p class="notice" id="voiceNote">Utilise les voix installées sur ton appareil. Qualité variable selon iOS et Safari.</p></section>
-<section class="card"><div class="head"><h2>Événements opérationnels</h2></div><div class="events"><button class="btn warn" data-event="turb">Turbulences</button><button class="btn warn" data-event="weather">Météo dégradée</button><button class="btn warn" data-event="delay">Retard au départ</button><button class="btn warn" data-event="runway">Changement de piste</button><button class="btn warn" data-event="medical">Passager malade</button><button class="btn warn" data-event="technical">Anomalie technique</button></div><p class="notice">Événements fictifs destinés aux tests de dialogue, pas à l'entraînement opérationnel.</p></section>
-<section class="card"><div class="head"><h2>Checklist de démonstration</h2><span class="sub">indicative</span></div><div class="checks"><label class="check"><input type="checkbox"> Documents et briefing départ consultés</label><label class="check"><input type="checkbox"> Préparation cockpit terminée</label><label class="check"><input type="checkbox"> Cabine déclarée prête</label><label class="check"><input type="checkbox"> Briefing avant décollage effectué</label><label class="check"><input type="checkbox"> Briefing approche effectué</label><label class="check"><input type="checkbox"> Checklist parking effectuée</label></div></section>
-<section class="card"><div class="head"><h2>État technique</h2></div><div class="rowline"><span>Moteur de phases</span><b>ACTIF</b></div><div class="rowline"><span>Dialogues FR / EN</span><b>ACTIF</b></div><div class="rowline"><span>Événements</span><b>ACTIF</b></div><div class="rowline"><span>Voix navigateur</span><b id="voiceState">À VÉRIFIER</b></div><div class="rowline"><span>Connexion MSFS</span><b style="color:var(--a)">ABSENTE</b></div><div class="rowline"><span>ATC natif remplacé</span><b style="color:var(--a)">NON</b></div></section>
-</aside></div></main><footer>REAL OPS CORE 0.2 · Prototype autonome · Ne pilote pas MSFS · Ne pas utiliser pour la navigation réelle</footer>
+<nav class="tabs">
+ <button class="tab active" data-tab="ops">Vue opérations</button>
+ <button class="tab" data-tab="voices">Profils vocaux</button>
+ <button class="tab" data-tab="scenario">Scénarios & événements</button>
+ <button class="tab" data-tab="system">Système</button>
+</nav>
+
+<section class="page active" id="page-ops">
+ <div class="grid">
+  <div class="col">
+   <section class="card">
+    <div class="card-head"><h2>Situation du vol</h2><span class="tag" id="phaseTag">PHASE 01 / 08</span></div>
+    <div class="metrics">
+     <div class="metric"><span>Phase</span><b id="phaseMetric">Parking</b></div>
+     <div class="metric"><span>Vitesse</span><b id="speedMetric">0 <small>kt</small></b></div>
+     <div class="metric"><span>Altitude</span><b id="altMetric">0 <small>ft</small></b></div>
+     <div class="metric"><span>Fréquence</span><b id="freqMetric">Sol</b></div>
+    </div>
+    <div class="fields">
+     <div class="field"><label>LANGUE DES ÉCHANGES</label><select id="language"><option value="fr">Français</option><option value="en">English</option></select></div>
+     <div class="field"><label>APPAREIL</label><select id="aircraft"><option>Airbus A320</option><option>Airbus A321</option><option>Boeing 737</option><option>Boeing 787</option><option>Avion léger</option><option>Autre avion</option></select></div>
+     <div class="field"><label>INDICATIF RADIO</label><input id="callsign" value="Transavia 1234" maxlength="32"></div>
+     <div class="field"><label>ROUTE</label><input id="route" value="LFMT → LFPO" maxlength="32"></div>
+    </div>
+    <div class="phases" id="phaseButtons"></div>
+    <div class="actions">
+     <button class="btn primary" id="nextPhase">Phase suivante →</button>
+     <button class="btn" id="callAtc">📡 Contacter ATC</button>
+     <button class="btn" id="talkCrew">👨‍✈️ Dialogue cockpit</button>
+     <button class="btn" id="callCabin">🛫 Appel cabine</button>
+     <button class="btn ghost" id="reset">Réinitialiser</button>
+    </div>
+   </section>
+   <section class="card">
+    <div class="card-head"><h2>Communications en temps réel</h2><div class="actions" style="margin:0"><button class="btn ghost" id="pauseSpeech">Pause voix</button><button class="btn ghost" id="clearLog">Effacer</button></div></div>
+    <div class="log" id="log" aria-live="polite"><div class="empty" id="emptyLog">Aucune communication pour le moment.<br>Déclenche une interaction pour lancer l'échange.</div></div>
+   </section>
+  </div>
+  <aside class="col">
+   <section class="card">
+    <div class="card-head"><h2>État opérationnel</h2><span class="tag">SIMULATION</span></div>
+    <div class="line"><span>Commandant</span><b class="green">EN SERVICE</b></div>
+    <div class="line"><span>Copilote</span><b class="green">EN SERVICE</b></div>
+    <div class="line"><span>Personnel cabine</span><b class="green">EN SERVICE</b></div>
+    <div class="line"><span>Contrôle aérien</span><b>SCÉNARISÉ</b></div>
+    <div class="line"><span>Événements actifs</span><b id="activeEvents">0</b></div>
+    <div class="line"><span>Voix disponibles</span><b id="voiceCount">Recherche…</b></div>
+   </section>
+   <section class="card">
+    <div class="card-head"><h2>Événements rapides</h2><span class="tiny">Contextuels à la phase</span></div>
+    <div class="event-grid">
+     <button class="btn warning" data-event="turbulence">Turbulences</button>
+     <button class="btn warning" data-event="weather">Météo dégradée</button>
+     <button class="btn warning" data-event="delay">Retard opérationnel</button>
+     <button class="btn warning" data-event="runway">Changement de piste</button>
+     <button class="btn warning" data-event="medical">Passager malade</button>
+     <button class="btn warning" data-event="technical">Anomalie technique</button>
+    </div>
+    <p class="tiny" style="margin-top:10px">Un événement peut déclencher plusieurs réponses successives de rôles différents.</p>
+   </section>
+   <section class="card">
+    <div class="card-head"><h2>Checklist de démonstration</h2><span class="tiny" id="checkCount">0 / 6</span></div>
+    <div class="checks" id="checklist">
+     <label class="check"><input type="checkbox"> Briefing et documents consultés</label>
+     <label class="check"><input type="checkbox"> Préparation cockpit terminée</label>
+     <label class="check"><input type="checkbox"> Cabine déclarée prête</label>
+     <label class="check"><input type="checkbox"> Briefing départ effectué</label>
+     <label class="check"><input type="checkbox"> Briefing approche effectué</label>
+     <label class="check"><input type="checkbox"> Checklist parking effectuée</label>
+    </div><div class="progress"><i id="checkProgress"></i></div>
+   </section>
+  </aside>
+ </div>
+</section>
+
+<section class="page" id="page-voices">
+ <section class="card">
+  <div class="card-head"><h2>Identité vocale par rôle</h2><span class="tag">3 PROFILS INDÉPENDANTS</span></div>
+  <p class="tiny">Choisis une voix différente pour chaque rôle. Les voix listées dépendent de l'appareil et du navigateur. Les réglages de débit et de hauteur donnent une identité distincte, sans remplacer un enregistrement professionnel.</p>
+  <div class="voice-grid" style="margin-top:14px">
+   <div class="voice-card"><h3 style="color:#a9c7ff">COMMANDANT</h3><div class="tiny">Calme · posé · décisionnel</div><label>VOIX</label><select id="voiceCaptain"></select><label>Débit <output id="rateCaptainOut">0.92</output></label><input id="rateCaptain" type="range" min=".75" max="1.15" step=".01" value=".92"><label>Hauteur <output id="pitchCaptainOut">0.92</output></label><input id="pitchCaptain" type="range" min=".7" max="1.3" step=".01" value=".92"><button class="btn ghost" data-test-voice="captain" style="margin-top:10px">Tester la voix</button></div>
+   <div class="voice-card"><h3 style="color:#69d9a6">COPILOTE</h3><div class="tiny">Précis · attentif · collaboratif</div><label>VOIX</label><select id="voiceCopilot"></select><label>Débit <output id="rateCopilotOut">1.00</output></label><input id="rateCopilot" type="range" min=".75" max="1.15" step=".01" value="1"><label>Hauteur <output id="pitchCopilotOut">1.04</output></label><input id="pitchCopilot" type="range" min=".7" max="1.3" step=".01" value="1.04"><button class="btn ghost" data-test-voice="copilot" style="margin-top:10px">Tester la voix</button></div>
+   <div class="voice-card"><h3 style="color:#ffc77b">PERSONNEL CABINE</h3><div class="tiny">Chaleureux · clair · rassurant</div><label>VOIX</label><select id="voiceCabin"></select><label>Débit <output id="rateCabinOut">0.98</output></label><input id="rateCabin" type="range" min=".75" max="1.15" step=".01" value=".98"><label>Hauteur <output id="pitchCabinOut">1.12</output></label><input id="pitchCabin" type="range" min=".7" max="1.3" step=".01" value="1.12"><button class="btn ghost" data-test-voice="cabin" style="margin-top:10px">Tester la voix</button></div>
+  </div>
+  <div class="actions"><button class="btn primary" id="voiceOnOff">🔊 Voix activée</button><button class="btn ghost" id="refreshVoices">Actualiser les voix</button></div>
+  <p class="tiny" id="voiceHelp" style="margin-top:10px">Sur iPhone, les voix disponibles sont celles d'iOS/Safari. Autorise la lecture audio après un premier appui si demandé.</p>
+ </section>
+ <section class="card"><div class="card-head"><h2>Audio ATC</h2><span class="tag">PROFIL RADIO</span></div>
+  <div class="fields"><div class="field"><label>VOIX ATC</label><select id="voiceAtc"></select></div><div class="field"><label>STYLE RADIO</label><select id="radioStyle"><option value="standard">Standard</option><option value="slow">Clair et lent</option></select></div></div>
+  <p class="tiny" style="margin-top:10px">La simulation applique un débit distinct à l'ATC. Le véritable filtrage radio et les voix enregistrées seront une étape audio dédiée.</p>
+ </section>
+</section>
+
+<section class="page" id="page-scenario">
+ <div class="grid">
+  <div class="col">
+   <section class="card"><div class="card-head"><h2>Scénario adaptatif</h2><span class="tag">RÈGLES CONTEXTUELLES</span></div>
+    <p class="tiny">Les dialogues tiennent compte de la phase sélectionnée, de la langue et du rôle. Les événements sont ajoutés au journal et peuvent déclencher une réponse de l'équipage et de la cabine.</p>
+    <div class="actions"><button class="btn primary" id="startBriefing">Lancer briefing équipage</button><button class="btn" id="startCabinBriefing">Briefing cabine</button><button class="btn" id="startDebrief">Débriefing de vol</button></div>
+    <div class="timeline" id="scenarioTimeline" style="margin-top:15px"><div class="timeline-item"><div class="timeline-time">PRÊT</div><div class="timeline-content">Le scénario attend une action.</div></div></div>
+   </section>
+   <section class="card"><div class="card-head"><h2>Déclencheurs d'événements</h2></div>
+    <div class="event-grid">
+     <button class="btn warning" data-event="turbulence">Turbulences en croisière</button>
+     <button class="btn warning" data-event="weather">Météo dégradée</button>
+     <button class="btn warning" data-event="delay">Retard départ</button>
+     <button class="btn warning" data-event="runway">Changement de piste</button>
+     <button class="btn warning" data-event="medical">Urgence médicale cabine</button>
+     <button class="btn warning" data-event="technical">Anomalie technique</button>
+    </div>
+   </section>
+  </div>
+  <aside class="col">
+   <section class="card"><div class="card-head"><h2>Logique de réponse</h2></div>
+    <div class="line"><span>Phase de vol</span><b>PRISE EN COMPTE</b></div>
+    <div class="line"><span>Langue sélectionnée</span><b>PRISE EN COMPTE</b></div>
+    <div class="line"><span>Rôle / personnalité</span><b>PRISE EN COMPTE</b></div>
+    <div class="line"><span>Enchaînement de dialogues</span><b>ACTIF</b></div>
+    <div class="line"><span>État réel de MSFS</span><b class="amber">NON CONNECTÉ</b></div>
+    <p class="tiny" style="margin-top:10px">L'adaptation est actuellement basée sur les actions et phases sélectionnées dans l'interface, pas sur les données télémétriques du simulateur.</p>
+   </section>
+  </aside>
+ </div>
+</section>
+
+<section class="page" id="page-system">
+ <div class="grid">
+  <div class="col">
+   <section class="card"><div class="card-head"><h2>Architecture du prototype</h2><span class="tag">V0.3.0</span></div>
+    <div class="line"><span>Interface web autonome</span><b class="green">OPÉRATIONNELLE</b></div>
+    <div class="line"><span>Phases de vol scénarisées</span><b class="green">OPÉRATIONNELLES</b></div>
+    <div class="line"><span>Dialogue FR / EN</span><b class="green">OPÉRATIONNEL</b></div>
+    <div class="line"><span>Profils vocaux par rôle</span><b class="green">OPÉRATIONNELS*</b></div>
+    <div class="line"><span>Événements adaptatifs</span><b class="green">OPÉRATIONNELS</b></div>
+    <div class="line"><span>Connexion SimConnect / MSFS</span><b class="amber">NON IMPLÉMENTÉE</b></div>
+    <div class="line"><span>Remplacement ATC natif</span><b class="amber">NON IMPLÉMENTÉ</b></div>
+    <div class="line"><span>Compatibilité Xbox native</span><b class="amber">NON VALIDÉE</b></div>
+    <p class="tiny" style="margin-top:12px">*Les profils vocaux exploitent la synthèse vocale disponible sur l'appareil. Ils ne sont pas des voix humaines enregistrées ni des voix IA distantes.</p>
+   </section>
+   <section class="card"><div class="card-head"><h2>Export du journal</h2></div><p class="tiny">Télécharge les échanges de la session au format texte pour les consulter ou les analyser.</p><div class="actions"><button class="btn primary" id="exportLog">Exporter le journal (.txt)</button></div></section>
+  </div>
+  <aside class="col">
+   <section class="card"><div class="card-head"><h2>Limites et sécurité</h2></div>
+    <div class="prompt"><b>Prototype de simulation uniquement.</b><br>Les clairances, fréquences, procédures et dialogues sont fictifs. Ne pas utiliser en vol réel ni comme référence opérationnelle. Les pilotes doivent suivre les procédures officielles, la documentation avion et les instructions ATC réelles.</div>
+    <p class="tiny" style="margin-top:12px">La cible MSFS 2024 sur Xbox nécessite une architecture et une voie de distribution compatibles avec les règles du simulateur. Une page HTML ouverte sur navigateur ne peut pas, à elle seule, remplacer l'ATC du simulateur ni se connecter au moteur de vol Xbox.</p>
+   </section>
+  </aside>
+ </div>
+</section>
+</main>
+<footer>REAL OPS V0.3 · HUMAN CREW & ATC ENVIRONMENT · Prototype non certifié</footer>
+
 <script>
 "use strict";
-const P=[
-{fr:"Parking",en:"Parked",s:0,a:0,svc:"Sol",atc:[["REAL OPS SOL, Transavia 1234 au parking, demandons mise en route et repoussage.","REAL OPS GROUND, Transavia 1234 on stand, request start-up and pushback."],["Transavia 1234, mise en route et repoussage approuvés dans ce scénario. Rappelez prêts au roulage.","Transavia 1234, start-up and pushback approved in this scenario. Report ready to taxi."]],crew:[["On commence la préparation cockpit. Tu peux vérifier le briefing et les documents ?","Let's begin cockpit preparation. Can you check the briefing and documents?"],["Bien reçu. Préparation initiale vérifiée dans notre scénario.","Roger. Initial preparation checked for this scenario."]],cabin:["Bonjour à toutes et à tous, bienvenue à bord. Installez-vous et rangez vos bagages, s'il vous plaît.","Ladies and gentlemen, welcome on board. Please take your seats and stow your baggage."]},
-{fr:"Roulage",en:"Taxi",s:12,a:0,svc:"Sol",atc:[["REAL OPS SOL, Transavia 1234, prêts au roulage.","REAL OPS GROUND, Transavia 1234, ready to taxi."],["Transavia 1234, suivez l'itinéraire attribué dans ce scénario et maintenez avant la piste.","Transavia 1234, follow the taxi route assigned in this scenario and hold short of the runway."]],crew:[["Nous débutons le roulage. Merci de confirmer que la cabine est prête.","We are commencing taxi. Please confirm the cabin is ready."],["Cabine prête dans le cadre du scénario. Les passagers sont assis.","Cabin ready for this scenario. Passengers are seated."]],cabin:["Personnel cabine, préparez la cabine pour le départ et vérifiez que les passagers sont installés.","Cabin crew, prepare the cabin for departure and check that passengers are seated."]},
-{fr:"Décollage",en:"Takeoff",s:145,a:0,svc:"Tour",atc:[["REAL OPS TOUR, Transavia 1234, prêt au départ dans le scénario.","REAL OPS TOWER, Transavia 1234, ready for departure in the scenario."],["Transavia 1234, autorisation de décollage simulée. Message de démonstration uniquement.","Transavia 1234, simulated takeoff clearance. Demonstration message only."]],crew:[["Briefing départ terminé. On vérifie les paramètres et la configuration.","Departure briefing complete. Let's verify parameters and configuration."],["Paramètres surveillés. Poursuivons le scénario de décollage.","Parameters monitored. Continue the takeoff scenario."]],cabin:["Personnel cabine, vérification finale de la cabine pour le départ.","Cabin crew, final cabin check for departure."]},
-{fr:"Montée / croisière",en:"Climb / Cruise",s:280,a:35000,svc:"Départ / Centre",atc:[["Transavia 1234, poursuivez la montée simulée et contactez le service suivant du scénario.","Transavia 1234, continue the simulated climb and contact the next service in the scenario."],["Transavia 1234, scénario en croisière. Surveillez les informations de vol.","Transavia 1234, cruise scenario. Monitor flight information."]],crew:[["La montée est stable dans notre simulation. Nous surveillons les paramètres et la météo.","The climb is stable in our simulation. We are monitoring parameters and weather."],["Bien reçu. Préparons le briefing arrivée avant la descente.","Roger. Let's prepare the arrival briefing before descent."]],cabin:["Mesdames et messieurs, nous avons atteint notre altitude de croisière simulée. Merci de suivre les consignes de l'équipage.","Ladies and gentlemen, we have reached our simulated cruising altitude. Please follow the crew's instructions."]},
-{fr:"Approche",en:"Approach",s:190,a:5000,svc:"Approche",atc:[["Transavia 1234, descente et approche simulées. Préparez le briefing d'arrivée.","Transavia 1234, simulated descent and approach. Prepare the arrival briefing."],["Transavia 1234, poursuivez le scénario d'approche et préparez le transfert vers la tour.","Transavia 1234, continue the approach scenario and prepare for tower handoff."]],crew:[["Briefing approche terminé. Vérifions les conditions météo et la configuration prévue.","Approach briefing complete. Let's check weather conditions and planned configuration."],["Approche briefée. Je surveille la stabilité du profil simulé.","Approach briefed. I am monitoring the simulated profile."]],cabin:["Personnel cabine, préparez la cabine pour l'arrivée et vérifiez que les passagers sont assis.","Cabin crew, prepare the cabin for arrival and check that passengers are seated."]},
-{fr:"Atterrissage / parking",en:"Landing / Parked",s:0,a:0,svc:"Sol",atc:[["Transavia 1234, piste dégagée dans le scénario, demandons le roulage vers le parking.","Transavia 1234, runway vacated in the scenario, request taxi to the stand."],["Transavia 1234, rejoignez le parking prévu dans le scénario.","Transavia 1234, proceed to the stand assigned in the scenario."]],crew:[["Atterrissage simulé effectué. Nous rejoignons le parking.","Simulated landing complete. We are taxiing to the stand."],["Après l'arrêt, nous effectuerons la checklist parking.","Once stopped, we will complete the parking checklist."]],cabin:["Bienvenue à destination. Veuillez rester assis jusqu'à l'arrêt complet de l'appareil et l'extinction du signal ceinture.","Welcome to our destination. Please remain seated until the aircraft has come to a complete stop and the seatbelt sign is off."]}];
-const E={
-turb:[["Le personnel cabine signale des turbulences. Le commandant demande de suspendre le service et de sécuriser la cabine.","Cabin crew reports turbulence. The captain asks to pause service and secure the cabin."],["Nous avons reçu l'information. Je surveille les conditions et nous suivons les consignes applicables.","Information received. I am monitoring conditions and we will follow applicable procedures."],"Veuillez regagner votre siège et attacher votre ceinture.","Please return to your seat and fasten your seatbelt."],
-weather:[["Le centre signale une dégradation météo sur la route. Réévaluons la situation.","Centre reports deteriorating weather along the route. Let's reassess the situation."],["Bien reçu. Je consulte les informations météo disponibles dans le scénario.","Roger. I am checking the weather information available in this scenario."]],
-delay:[["Le départ est retardé. Informons le personnel cabine et actualisons l'information passagers.","Departure is delayed. Let's inform the cabin crew and update passenger information."],["Bien reçu. Je coordonne la mise à jour du briefing et du temps estimé.","Roger. I will coordinate the briefing update and estimated time."]],
-runway:[["Le scénario introduit un changement de piste. Reprenons le briefing départ depuis le début.","The scenario introduces a runway change. Let's restart the departure briefing."],["Compris. La piste doit être vérifiée dans les informations officielles avant toute opération réelle.","Understood. The runway must be verified against official information before any real operation."]],
-medical:[["Le chef de cabine signale un passager malade. Le commandant demande un point de situation et l'assistance appropriée.","The cabin manager reports an ill passenger. The captain requests a situation update and appropriate assistance."],["Je contacte le personnel cabine pour obtenir les informations utiles.","I will contact the cabin crew for relevant information."]],
-technical:[["Une anomalie technique est signalée dans le scénario. Nous suspendons la progression et consultons les procédures approuvées.","A technical abnormality is reported in the scenario. We pause progression and consult approved procedures."],["Bien reçu. Aucune action improvisée : nous nous référons à la documentation approuvée.","Roger. No improvised action: we refer to approved documentation."]]};
-let idx=0,voiceOn=true;const $=id=>document.getElementById(id),L=()=> $("language").value;
-function say(t){if(!voiceOn||!window.speechSynthesis)return;try{speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang=L()==="fr"?"fr-FR":"en-GB";u.rate=Number($("rate").value);let v=speechSynthesis.getVoices().find(x=>x.lang.toLowerCase().startsWith(L()==="fr"?"fr":"en"));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
-function add(type,who,t){$("empty")?.remove();let el=document.createElement("div");el.className="entry "+type;let top=document.createElement("div");top.className="top";let sp=document.createElement("b");sp.className="speaker";sp.textContent=who;let tm=document.createElement("time");tm.textContent=new Date().toLocaleTimeString(L()==="fr"?"fr-FR":"en-GB",{hour:"2-digit",minute:"2-digit"});let p=document.createElement("p");p.textContent=t;top.append(sp,tm);el.append(top,p);$("log").prepend(el);say(t)}
-function render(){let p=P[idx];$("phaseValue").textContent=p[L()];$("speedValue").innerHTML=p.s+' <small>kt</small>';$("altValue").innerHTML=p.a.toLocaleString()+' <small>ft</small>';$("serviceValue").textContent=p.svc;$("phases").innerHTML="";P.forEach((x,i)=>{let b=document.createElement("button");b.className="phase"+(i===idx?" active":i<idx?" done":"");b.textContent=x[L()];b.onclick=()=>{idx=i;render()};$("phases").append(b)})}
-function pair(x){return x[L()==="fr"?0:1]}function atc(){P[idx].atc.forEach(x=>add("","TOUR DE CONTRÔLE",pair(x)))}function crew(){P[idx].crew.forEach(x=>add("crew","ÉQUIPAGE",pair(x)))}function cabin(){add("cabin","PERSONNEL CABINE",P[idx].cabin[L()==="fr"?0:1])}
-$("next").onclick=()=>{if(idx<P.length-1){idx++;render();add("","REAL OPS CORE",L()==="fr"?"Phase sélectionnée : "+P[idx].fr:"Selected phase: "+P[idx].en)}else add("","REAL OPS CORE",L()==="fr"?"Fin du scénario. Réinitialise pour recommencer.":"Scenario complete. Reset to start again.")};
-$("atc").onclick=atc;$("crew").onclick=crew;$("cabin").onclick=cabin;$("reset").onclick=()=>{idx=0;$("log").innerHTML='<div class="empty" id="empty">Session réinitialisée. En attente de la première communication.</div>';render();if(window.speechSynthesis)speechSynthesis.cancel()};$("clear").onclick=()=>$("log").innerHTML='<div class="empty" id="empty">Journal effacé.</div>';
-document.querySelectorAll("[data-event]").forEach(b=>b.onclick=()=>{let e=E[b.dataset.event];add("event","ÉVÉNEMENT",pair(e[0]));add("crew","ÉQUIPAGE",pair(e[1]));if(e[2])add("cabin","PERSONNEL CABINE",e[L()==="fr"?2:3])});
-$("language").onchange=render;$("voice").onclick=()=>{voiceOn=!voiceOn;$("voice").textContent=voiceOn?"🔊 Voix activée":"🔇 Voix coupée";$("voiceState").textContent=voiceOn?"ACTIVE":"COUPÉE";if(!voiceOn&&window.speechSynthesis)speechSynthesis.cancel()};
-if(!window.speechSynthesis){$("voiceState").textContent="INDISPONIBLE";$("voiceNote").textContent="La synthèse vocale n'est pas disponible dans ce navigateur. Les dialogues restent visibles."}render();
-</script></body></html>
+const PHASES=[
+ {id:"park",fr:"Parking",en:"Parked",speed:0,alt:0,freq:"Sol",atc:[["REAL OPS SOL, Transavia 1234 au parking, demandons mise en route et repoussage.","REAL OPS GROUND, Transavia 1234 on stand, request start-up and pushback."],["Transavia 1234, mise en route et repoussage simulés approuvés. Rappelez prêts au roulage.","Transavia 1234, simulated start-up and pushback approved. Report ready to taxi."]]},
+ {id:"taxi",fr:"Roulage",en:"Taxi",speed:12,alt:0,freq:"Sol",atc:[["REAL OPS SOL, Transavia 1234, prêts au roulage.","REAL OPS GROUND, Transavia 1234, ready to taxi."],["Transavia 1234, suivez l'itinéraire prévu dans le scénario et maintenez avant la piste.","Transavia 1234, follow the taxi route in this scenario and hold short of the runway."]]},
+ {id:"takeoff",fr:"Décollage",en:"Takeoff",speed:145,alt:0,freq:"Tour",atc:[["REAL OPS TOUR, Transavia 1234, prêt au départ dans le scénario.","REAL OPS TOWER, Transavia 1234, ready for departure in this scenario."],["Transavia 1234, autorisation de décollage simulée. Message de démonstration uniquement.","Transavia 1234, simulated takeoff clearance. Demonstration message only."]]},
+ {id:"climb",fr:"Montée",en:"Climb",speed:250,alt:18000,freq:"Départ",atc:[["Transavia 1234, poursuivez la montée simulée et contactez le service suivant.","Transavia 1234, continue the simulated climb and contact the next service."],["Transavia 1234, reçu. Maintenez l'écoute dans le scénario.","Transavia 1234, roger. Monitor the frequency in this scenario."]]},
+ {id:"cruise",fr:"Croisière",en:"Cruise",speed:280,alt:35000,freq:"Centre",atc:[["Transavia 1234, scénario en croisière. Surveillez les informations de vol.","Transavia 1234, cruise scenario. Monitor flight information."],["Transavia 1234, bien reçu. Restez à l'écoute.","Transavia 1234, roger. Remain on frequency."]]},
+ {id:"approach",fr:"Approche",en:"Approach",speed:190,alt:5000,freq:"Approche",atc:[["Transavia 1234, descente et approche simulées. Préparez le briefing arrivée.","Transavia 1234, simulated descent and approach. Prepare the arrival briefing."],["Transavia 1234, poursuivez le scénario d'approche et préparez le transfert vers la tour.","Transavia 1234, continue the approach scenario and prepare for tower handoff."]]},
+ {id:"landing",fr:"Atterrissage",en:"Landing",speed:135,alt:0,freq:"Tour",atc:[["Transavia 1234, atterrissage simulé effectué dans ce scénario.","Transavia 1234, simulated landing completed in this scenario."],["Transavia 1234, piste dégagée dans le scénario, contactez le sol.","Transavia 1234, runway vacated in this scenario, contact ground."]]},
+ {id:"parked",fr:"Parking arrivée",en:"Arrival stand",speed:0,alt:0,freq:"Sol",atc:[["Transavia 1234, demandons le roulage vers le parking attribué au scénario.","Transavia 1234, request taxi to the stand assigned in this scenario."],["Transavia 1234, rejoignez le parking prévu dans le scénario.","Transavia 1234, proceed to the stand assigned in the scenario."]]}
+];
+const ROLE_TEXT={
+ captain:{
+  fr:["Je prends les commandes. On avance calmement, une étape après l'autre. Tu as un point à signaler avant de poursuivre ?","Je préfère qu'on confirme les éléments importants plutôt que de supposer. Fais-moi ton retour.","Bien reçu. Je garde une vision globale et je te laisse surveiller les paramètres."],
+  en:["I'll take the lead. We'll proceed calmly, one step at a time. Anything to report before we continue?","I'd rather confirm the important details than make assumptions. Give me your feedback.","Roger. I'll keep the overall picture while you monitor the parameters."]
+ },
+ copilot:{
+  fr:["J'ai les paramètres sous surveillance. Je te signale immédiatement toute évolution dans le scénario.","Bien reçu commandant. Je vérifie les informations disponibles et je te fais un retour clair.","Tout est cohérent avec la phase sélectionnée. On peut poursuivre le scénario."],
+  en:["I'm monitoring the parameters. I'll call out any change in the scenario immediately.","Understood, Captain. I'll check the available information and give you a clear update.","Everything is consistent with the selected phase. We can continue the scenario."]
+ },
+ cabin:{
+  fr:["Cabine, bonjour. Je fais un point avec l'équipage et je reviens vers vous si une information nécessite votre attention.","L'ensemble de l'équipe cabine est prêt dans le cadre de cette simulation. Nous restons disponibles.","Merci de votre attention. Nous vous tiendrons informés de la suite du vol."],
+  en:["Cabin crew, hello. I'll check in with the team and come back if anything needs your attention.","The cabin team is ready for this simulation. We remain available.","Thank you for your attention. We'll keep you informed as the flight progresses."]
+ }
+};
+const EVENTS={
+ turbulence:{name:"Turbulences",fr:["Le personnel cabine signale des turbulences. Nous suspendons le service et demandons la sécurisation de la cabine.","Bien reçu. Je surveille l'évolution de la situation et je tiens le commandant informé.","Mesdames et messieurs, veuillez regagner votre siège et attacher votre ceinture."],en:["Cabin crew reports turbulence. We are pausing service and asking the cabin to be secured.","Roger. I am monitoring the situation and will keep the captain informed.","Ladies and gentlemen, please return to your seat and fasten your seatbelt."],roles:["captain","copilot","cabin"],phases:["climb","cruise","approach"]},
+ weather:{name:"Météo dégradée",fr:["Le centre signale une dégradation météo sur la route. Je propose de réévaluer les informations disponibles.","Bien reçu. Je prépare un point météo pour le commandant.","Nous vous informerons si les conditions ont une incidence sur le déroulement du vol."],en:["Centre reports deteriorating weather along the route. I suggest reassessing the available information.","Roger. I'll prepare a weather update for the captain.","We'll let you know if conditions affect the progress of the flight."],roles:["captain","copilot","cabin"],phases:["climb","cruise","approach"]},
+ delay:{name:"Retard opérationnel",fr:["Nous avons un retard opérationnel. Mettons à jour le briefing et l'information passagers.","Je vérifie les éléments du scénario et je prépare une estimation actualisée.","Mesdames et messieurs, notre départ est retardé. Nous vous communiquerons les informations dès que possible."],en:["We have an operational delay. Let's update the briefing and passenger information.","I'll check the scenario details and prepare an updated estimate.","Ladies and gentlemen, our departure is delayed. We will provide updates as soon as possible."],roles:["captain","copilot","cabin"],phases:["park","taxi"]},
+ runway:{name:"Changement de piste",fr:["Le scénario introduit un changement de piste. Nous reprenons le briefing depuis le début.","Compris. Les nouvelles informations doivent être vérifiées avant de poursuivre le scénario.","Équipage cabine informé du changement dans le cadre de la simulation."],en:["The scenario introduces a runway change. We'll restart the briefing from the beginning.","Understood. The new information must be verified before continuing the scenario.","Cabin crew informed of the change for this simulation."],roles:["captain","copilot","cabin"],phases:["park","taxi","takeoff"]},
+ medical:{name:"Passager malade",fr:["Le chef de cabine signale un passager malade. Demandons un point de situation et l'assistance appropriée.","Je contacte le personnel cabine pour obtenir les informations utiles et tenir le commandant informé.","Notre équipe prend en charge la situation. Merci de laisser le passage libre si nécessaire."],en:["The cabin manager reports an ill passenger. Let's request an update and appropriate assistance.","I'll contact the cabin crew for relevant information and keep the captain informed.","Our team is assisting. Please keep the aisle clear if necessary."],roles:["captain","copilot","cabin"],phases:["taxi","takeoff","climb","cruise","approach"]},
+ technical:{name:"Anomalie technique",fr:["Une anomalie technique est signalée dans le scénario. Nous suspendons la progression et consultons les procédures approuvées.","Bien reçu. Je ne propose aucune action improvisée : je prépare les informations nécessaires au commandant.","Le personnel cabine reste en attente des consignes du commandant."],en:["A technical abnormality is reported in the scenario. We pause progression and consult approved procedures.","Roger. I won't suggest improvised action; I'll prepare the information needed by the captain.","Cabin crew will await the captain's instructions."],roles:["captain","copilot","cabin"],phases:["park","taxi","takeoff","climb","cruise","approach","landing"]}
+};
+let phaseIndex=0,voiceEnabled=true,voices=[],eventCount=0,transcript=[],speechPaused=false;
+const $=id=>document.getElementById(id),lang=()=> $("language").value,phase=()=>PHASES[phaseIndex];
+const roleNames={captain:"COMMANDANT",copilot:"COPILOTE",cabin:"PERSONNEL CABINE",atc:"CONTRÔLE AÉRIEN",system:"REAL OPS"};
+function textPair(fr,en){return lang()==="fr"?fr:en}
+function selectedVoice(role){
+ const id=role==="captain"?"voiceCaptain":role==="copilot"?"voiceCopilot":role==="cabin"?"voiceCabin":"voiceAtc";
+ const value=$(id)?.value;return voices.find(v=>v.name===value)||null;
+}
+function speak(role,text){
+ if(!voiceEnabled||speechPaused||!("speechSynthesis"in window))return;
+ try{
+  const utter=new SpeechSynthesisUtterance(text);utter.lang=lang()==="fr"?"fr-FR":"en-GB";
+  const rateId=role==="atc"?"radioRate":`rate${role[0].toUpperCase()+role.slice(1)}`;
+  const pitchId=role==="atc"?"pitchCopilot":`pitch${role[0].toUpperCase()+role.slice(1)}`;
+  utter.rate=role==="atc"?($("radioStyle").value==="slow"?.82:.9):Number($(rateId)?.value||1);
+  utter.pitch=role==="atc"?.96:Number($(pitchId)?.value||1);
+  const voice=selectedVoice(role);if(voice)utter.voice=voice;
+  window.speechSynthesis.speak(utter);
+ }catch(e){$("voiceHelp").textContent="La synthèse vocale n'a pas pu démarrer dans ce navigateur."}
+}
+function addMessage(role,message,extra=""){
+ $("emptyLog")?.remove();
+ const el=document.createElement("article");el.className="entry "+role;
+ const top=document.createElement("div");top.className="entry-top";
+ const who=document.createElement("span");who.className="speaker";who.textContent=roleNames[role]||roleNames.system;
+ const time=document.createElement("time");time.textContent=new Date().toLocaleTimeString(lang()==="fr"?"fr-FR":"en-GB",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
+ const body=document.createElement("p");body.textContent=message;top.append(who,time);el.append(top,body);
+ if(extra){const note=document.createElement("small");note.textContent=extra;el.append(note)}
+ $("log").prepend(el);transcript.push({time:new Date().toISOString(),role:roleNames[role]||role,message,phase:phase().fr});
+ speak(role,message);
+}
+function renderPhases(){
+ $("phaseButtons").innerHTML="";
+ PHASES.forEach((p,i)=>{const b=document.createElement("button");b.className="phase"+(i===phaseIndex?" active":i<phaseIndex?" done":"");b.textContent=lang()==="fr"?p.fr:p.en;b.onclick=()=>selectPhase(i);$("phaseButtons").append(b)});
+ $("phaseMetric").textContent=lang()==="fr"?phase().fr:phase().en;$("speedMetric").innerHTML=phase().speed+' <small>kt</small>';$("altMetric").innerHTML=phase().alt.toLocaleString()+' <small>ft</small>';$("freqMetric").textContent=phase().freq;$("phaseTag").textContent=`PHASE ${String(phaseIndex+1).padStart(2,"0")} / ${String(PHASES.length).padStart(2,"0")}`;
+}
+function selectPhase(i){phaseIndex=i;renderPhases();addMessage("system",textPair("Phase sélectionnée : "+phase().fr,"Selected phase: "+phase().en));}
+function atcExchange(){
+ const call=$("callsign").value.trim()||"Aircraft";const route=$("route").value.trim();
+ const lines=phase().atc.map(x=>textPair(x[0].replaceAll("Transavia 1234",call),x[1].replaceAll("Transavia 1234",call)));
+ addMessage("atc",lines[0],textPair("Fréquence simulée : "+phase().freq+" · Route "+route,"Simulated service: "+phase().freq+" · Route "+route));
+ setTimeout(()=>addMessage("atc",lines[1]),650);
+}
+let crewTurn=0;
+function cockpitExchange(){
+ const order=crewTurn%2===0?["captain","copilot"]:["copilot","captain"];crewTurn++;
+ const a=ROLE_TEXT[order[0]][lang()],b=ROLE_TEXT[order[1]][lang()];
+ addMessage(order[0],a[(phaseIndex+crewTurn)%a.length]);setTimeout(()=>addMessage(order[1],b[(phaseIndex+crewTurn+1)%b.length]),700);
+}
+function cabinCall(){
+ const lines=ROLE_TEXT.cabin[lang()];addMessage("cabin",lines[phaseIndex%lines.length],textPair("Échange cabine · "+phase().fr,"Cabin exchange · "+phase().en));
+}
+function triggerEvent(id){
+ const ev=EVENTS[id];if(!ev)return;eventCount++;$("activeEvents").textContent=eventCount;
+ const p=phase().id;const context=ev.phases.includes(p)?textPair("Événement cohérent avec la phase actuelle.","Event is consistent with the current phase.") : textPair("Événement déclenché hors phase habituelle : scénario forcé.","Event triggered outside its usual phase: forced scenario.");
+ addMessage("event",textPair("ÉVÉNEMENT : "+ev.name,"EVENT: "+ev.name),context);
+ const messages=ev[lang()];
+ ev.roles.forEach((role,i)=>setTimeout(()=>addMessage(role,messages[i],textPair("Réponse contextuelle · "+phase().fr,"Contextual response · "+phase().en)),450*(i+1)));
+}
+function addTimeline(label,detail){const item=document.createElement("div");item.className="timeline-item";const tm=document.createElement("div");tm.className="timeline-time";tm.textContent=new Date().toLocaleTimeString(lang()==="fr"?"fr-FR":"en-GB",{hour:"2-digit",minute:"2-digit"});const d=document.createElement("div");d.className="timeline-content";d.textContent=label+" — "+detail;item.append(tm,d);$("scenarioTimeline").prepend(item)}
+function briefing(){const a=lang()==="fr"?["Briefing équipage : route "+$("route").value+". Vérifions ensemble les éléments de départ.","Je prends les points opérationnels. Signale-moi tout élément qui nécessite une vérification.","Bien reçu. Je suis prêt à poursuivre le scénario."]:["Crew briefing: route "+$("route").value+". Let's review the departure items together.","I'll cover the operational points. Flag anything that needs verification.","Roger. I'm ready to continue the scenario."];addMessage("captain",a[0]);setTimeout(()=>addMessage("copilot",a[1]),650);setTimeout(()=>addMessage("captain",a[2]),1300);addTimeline("Briefing équipage",$("route").value)}
+function cabinBriefing(){const t=textPair("Cabine, nous préparons le départ. Vérifiez la cabine et confirmez lorsque l'équipe est prête.","Cabin crew, we're preparing for departure. Check the cabin and confirm when the team is ready.");addMessage("cabin",t);setTimeout(()=>addMessage("captain",textPair("Merci. Tenez-nous informés de tout point nécessitant notre attention.","Thank you. Let us know if anything requires our attention.")),600);addTimeline("Briefing cabine",phase().fr)}
+function debrief(){const t=textPair("Débriefing : le scénario est terminé. Faisons le point sur les communications et les événements rencontrés.","Debrief: the scenario is complete. Let's review communications and events encountered.");addMessage("captain",t);addMessage("copilot",textPair("Le journal de session peut être exporté depuis l'onglet Système.","The session log can be exported from the System tab."));addTimeline("Débriefing",transcript.length+" communications enregistrées")}
+function loadVoices(){
+ if(!("speechSynthesis"in window)){ $("voiceCount").textContent="Indisponible";$("voiceHelp").textContent="Ce navigateur ne propose pas SpeechSynthesis. Les dialogues restent visibles.";return}
+ voices=window.speechSynthesis.getVoices();$("voiceCount").textContent=voices.length?String(voices.length):"En attente";
+ ["voiceCaptain","voiceCopilot","voiceCabin","voiceAtc"].forEach((id,i)=>{
+  const sel=$(id);if(!sel)return;const old=sel.value;sel.innerHTML="";
+  const filtered=voices.filter(v=>v.lang.toLowerCase().startsWith(lang()==="fr"?"fr":"en"));
+  const list=filtered.length?filtered:voices;
+  list.forEach(v=>{const o=document.createElement("option");o.value=v.name;o.textContent=v.name+" ("+v.lang+")";sel.append(o)});
+  if(old&&[...sel.options].some(o=>o.value===old))sel.value=old;
+  else if(list.length)sel.selectedIndex=Math.min(i,list.length-1);
+ });
+}
+function updateCheck(){const checks=[...$("checklist").querySelectorAll("input")],n=checks.filter(x=>x.checked).length;$("checkCount").textContent=n+" / "+checks.length;$("checkProgress").style.width=(n/checks.length*100)+"%"}
+function exportTranscript(){
+ const lines=["REAL OPS V0.3 — JOURNAL DE SESSION","Route : "+$("route").value,"Appareil : "+$("aircraft").value,"Export : "+new Date().toLocaleString(),"",""];
+ transcript.slice().reverse().forEach(x=>lines.push(`[${new Date(x.time).toLocaleTimeString()}] ${x.role} — ${x.message}`));
+ const blob=new Blob([lines.join("\n")],{type:"text/plain;charset=utf-8"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="REAL-OPS-journal.txt";a.click();URL.revokeObjectURL(url);
+}
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+b.dataset.tab))}));
+$("nextPhase").onclick=()=>{if(phaseIndex<PHASES.length-1){phaseIndex++;renderPhases();addMessage("system",textPair("Passage à la phase : "+phase().fr,"Moving to phase: "+phase().en));}else addMessage("system",textPair("Fin du scénario. Tu peux lancer le débriefing.","Scenario complete. You can start the debrief."))};
+$("callAtc").onclick=atcExchange;$("talkCrew").onclick=cockpitExchange;$("callCabin").onclick=cabinCall;
+$("reset").onclick=()=>{phaseIndex=0;eventCount=0;$("activeEvents").textContent="0";transcript=[];crewTurn=0;$("log").innerHTML='<div class="empty" id="emptyLog">Session réinitialisée. En attente de la première communication.</div>';renderPhases();if(window.speechSynthesis)window.speechSynthesis.cancel();$("sessionStatus").textContent="● SESSION ACTIVE"};
+$("clearLog").onclick=()=>{$("log").innerHTML='<div class="empty" id="emptyLog">Journal effacé. Les nouvelles communications apparaîtront ici.</div>';transcript=[]};
+document.querySelectorAll("[data-event]").forEach(b=>b.addEventListener("click",()=>triggerEvent(b.dataset.event)));
+$("language").onchange=()=>{renderPhases();loadVoices()};
+$("voiceOnOff").onclick=()=>{voiceEnabled=!voiceEnabled;$("voiceOnOff").textContent=voiceEnabled?"🔊 Voix activée":"🔇 Voix coupée";if(!voiceEnabled&&window.speechSynthesis)window.speechSynthesis.cancel()};
+$("pauseSpeech").onclick=()=>{if(!window.speechSynthesis)return;speechPaused=!speechPaused;if(speechPaused)window.speechSynthesis.pause();else window.speechSynthesis.resume();$("pauseSpeech").textContent=speechPaused?"Reprendre voix":"Pause voix"};
+$("refreshVoices").onclick=loadVoices;$("startBriefing").onclick=briefing;$("startCabinBriefing").onclick=cabinBriefing;$("startDebrief").onclick=debrief;$("exportLog").onclick=exportTranscript;
+document.querySelectorAll("[data-test-voice]").forEach(b=>b.onclick=()=>{const role=b.dataset.testVoice;const sample={captain:textPair("Bonjour, ici le commandant. Nous allons conduire ce vol avec méthode et calme.","Hello, this is the captain. We'll conduct this flight calmly and methodically."),copilot:textPair("Commandant, paramètres surveillés. Je vous signale toute évolution.","Captain, parameters monitored. I'll report any changes."),cabin:textPair("Mesdames et messieurs, bienvenue à bord. Nous sommes heureux de vous accueillir.","Ladies and gentlemen, welcome aboard. We're pleased to have you with us.")};speak(role,sample[role])});
+["Captain","Copilot","Cabin"].forEach(role=>["rate","pitch"].forEach(kind=>{const el=$(`${kind}${role}`);el.addEventListener("input",()=> $(`${kind}${role}Out`).textContent=Number(el.value).toFixed(2))}));
+$("checklist").addEventListener("change",updateCheck);
+if(window.speechSynthesis){window.speechSynthesis.onvoiceschanged=loadVoices;loadVoices()}else loadVoices();
+renderPhases();updateCheck();
+</script>
+</body></html>
