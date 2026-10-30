@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>REAL OPS CORE — Prototype</title>
+<style>
+:root{--bg:#08111f;--panel:#101d30;--panel2:#14243a;--line:#263a55;--text:#edf4ff;--muted:#91a4bd;--cyan:#55d6e8;--green:#5ee0a0;--amber:#ffc66d;--red:#ff7f87}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,#18304b 0,#08111f 42%);color:var(--text);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{padding:22px 18px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center;max-width:1180px;margin:auto}
+.brand{display:flex;align-items:center;gap:12px}.mark{width:42px;height:42px;border:1px solid #3d6b84;border-radius:12px;display:grid;place-items:center;color:var(--cyan);font-weight:800;letter-spacing:-2px;background:#10283b}.brand h1{font-size:18px;letter-spacing:2px;margin:0}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2px}
+.status{font-size:11px;color:var(--green);border:1px solid #28664f;background:#102c29;border-radius:20px;padding:6px 10px;white-space:nowrap}
+main{max-width:1180px;margin:0 auto;padding:20px 18px 40px}.hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin:8px 0 20px}.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:2px;font-weight:700}.hero h2{font-size:clamp(26px,5vw,38px);line-height:1.1;margin:7px 0}.hero p{color:var(--muted);margin:0;max-width:620px}.tag{font-size:11px;border:1px solid var(--line);padding:7px 10px;border-radius:8px;color:#b9cbe0}
+.grid{display:grid;grid-template-columns:1.25fr .75fr;gap:14px}.panel{background:linear-gradient(145deg,rgba(20,36,58,.96),rgba(12,25,42,.96));border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:0 12px 30px #0002}.panel h3{font-size:13px;letter-spacing:1.2px;text-transform:uppercase;margin:0 0 14px;color:#c8d8eb}.panel h3 span{color:var(--muted);font-weight:400;letter-spacing:0;text-transform:none}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:14px}.metric{background:#0b1728;border:1px solid #20344e;border-radius:11px;padding:11px}.metric label{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1px}.metric strong{display:block;font-size:20px;margin-top:4px}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;color:var(--muted);font-size:11px;margin-bottom:5px}.field select,.field input{width:100%;background:#091626;border:1px solid #2a405c;color:var(--text);padding:11px;border-radius:9px;font:inherit}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}button{border:1px solid #31516b;background:#17334b;color:var(--text);padding:10px 13px;border-radius:9px;font-weight:650;font-size:12px;cursor:pointer}button.primary{background:var(--cyan);color:#06202a;border-color:var(--cyan)}button.ghost{background:transparent}button:active{transform:translateY(1px)}
+.phasebar{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-top:16px}.phase{height:5px;border-radius:5px;background:#263a55}.phase.active{background:var(--cyan)}.phase.done{background:var(--green)}
+.feed{height:300px;overflow:auto;display:flex;flex-direction:column;gap:9px;padding-right:3px}.msg{border:1px solid #253c57;background:#0b192b;border-radius:11px;padding:10px 12px}.msg .meta{display:flex;justify-content:space-between;gap:10px;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}.msg p{margin:5px 0 0;font-size:13px}.speaker{color:var(--cyan);font-weight:750}.msg.crew .speaker{color:var(--green)}.msg.cabin .speaker{color:var(--amber)}
+.side-stack{display:flex;flex-direction:column;gap:14px}.checklist{display:grid;gap:8px}.check{display:flex;align-items:center;gap:9px;color:#c6d5e7;font-size:12px}.check input{accent-color:var(--green);width:16px;height:16px}.note{color:var(--muted);font-size:11px;margin-top:12px}.freq{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #20344e;font-size:12px}.freq:last-child{border:0}.freq b{font-variant-numeric:tabular-nums;color:var(--cyan)}
+footer{color:#71869f;font-size:10px;text-align:center;padding:20px}
+@media(max-width:760px){header{padding:16px}.hero{display:block}.hero .tag{display:inline-block;margin-top:12px}.grid{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}.feed{height:260px}.phasebar{grid-template-columns:repeat(3,1fr);row-gap:8px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><div class="mark">RO</div><div><h1>REAL OPS</h1><small>REALISTIC OPERATIONS CORE</small></div></div>
+ <div class="status">● PROTOTYPE LOCAL — V0.1</div>
+</header>
+<main>
+ <section class="hero">
+  <div><div class="eyebrow">FLIGHT OPERATIONS SIMULATION</div><h2>Une expérience cockpit<br>plus vivante.</h2><p>Prototype de démonstration : moteur de phases de vol, échanges ATC simulés, équipage et annonces cabine en français ou en anglais.</p></div>
+  <div class="tag">MSFS 2024 · CONCEPT DE PRÉ-INTÉGRATION</div>
+ </section>
+ <div class="grid">
+  <div>
+   <section class="panel">
+    <h3>Vol en cours <span>/ session de démonstration</span></h3>
+    <div class="metrics">
+     <div class="metric"><label>Phase</label><strong id="phaseMetric">Parking</strong></div>
+     <div class="metric"><label>Vitesse</label><strong id="speedMetric">0 <small>kt</small></strong></div>
+     <div class="metric"><label>Altitude</label><strong id="altMetric">0 <small>ft</small></strong></div>
+     <div class="metric"><label>Fréquence</label><strong id="freqMetric">121.700</strong></div>
+    </div>
+    <div class="controls">
+     <div class="field"><label for="language">Langue des communications</label><select id="language"><option value="fr">Français</option><option value="en">English</option></select></div>
+     <div class="field"><label for="aircraft">Type d'appareil</label><select id="aircraft"><option>Airbus A320</option><option>Boeing 737</option><option>Avion léger</option><option>Autre avion</option></select></div>
+     <div class="field"><label for="callsign">Indicatif</label><input id="callsign" value="Transavia 1234" maxlength="24"></div>
+     <div class="field"><label for="airport">Aéroport de démonstration</label><input id="airport" value="LFMT — Montpellier" maxlength="40"></div>
+    </div>
+    <div class="actions">
+     <button class="primary" id="nextBtn">Phase suivante →</button>
+     <button id="atcBtn">Appel ATC</button>
+     <button id="crewBtn">Échange cockpit</button>
+     <button id="cabinBtn">Annonce cabine</button>
+     <button class="ghost" id="resetBtn">Réinitialiser</button>
+    </div>
+    <div class="phasebar" id="phasebar"><div class="phase active"></div><div class="phase"></div><div class="phase"></div><div class="phase"></div><div class="phase"></div><div class="phase"></div></div>
+    <p class="note">Les valeurs et dialogues sont simulés et ne pilotent pas le simulateur. Ne pas utiliser comme aide à la navigation réelle.</p>
+   </section>
+   <section class="panel" style="margin-top:14px">
+    <h3>Journal des communications <span>/ chronologie de session</span></h3>
+    <div class="feed" id="feed" aria-live="polite">
+     <div class="msg"><div class="meta"><span class="speaker">REAL OPS CORE</span><span>Initialisation</span></div><p>Bienvenue. Lancez la phase suivante pour commencer la démonstration.</p></div>
+    </div>
+   </section>
+  </div>
+  <div class="side-stack">
+   <section class="panel">
+    <h3>Checklist équipage <span>/ indicative</span></h3>
+    <div class="checklist" id="checks">
+     <label class="check"><input type="checkbox"> Documents et météo consultés</label>
+     <label class="check"><input type="checkbox"> Briefing départ effectué</label>
+     <label class="check"><input type="checkbox"> Cabine prête au départ</label>
+     <label class="check"><input type="checkbox"> Check avant décollage</label>
+     <label class="check"><input type="checkbox"> Briefing approche effectué</label>
+     <label class="check"><input type="checkbox"> Check après atterrissage</label>
+    </div>
+    <p class="note">Checklist fictive destinée à la démonstration. Les procédures réelles dépendent de l'avion et de l'exploitant.</p>
+   </section>
+   <section class="panel">
+    <h3>Services ATC <span>/ scénario fictif</span></h3>
+    <div class="freq"><span>Sol · Ground</span><b>121.700</b></div>
+    <div class="freq"><span>Tour · Tower</span><b>118.700</b></div>
+    <div class="freq"><span>Départ · Departure</span><b>126.000</b></div>
+    <div class="freq"><span>Approche · Approach</span><b>127.000</b></div>
+    <p class="note">Fréquences fictives de démonstration : toujours vérifier les fréquences publiées dans les documents aéronautiques officiels.</p>
+   </section>
+   <section class="panel">
+    <h3>État du prototype</h3>
+    <div class="freq"><span>Moteur de phases</span><b style="color:var(--green)">ACTIF</b></div>
+    <div class="freq"><span>Dialogues FR / EN</span><b style="color:var(--green)">ACTIF</b></div>
+    <div class="freq"><span>Connexion MSFS</span><b style="color:var(--amber)">NON CONNECTÉ</b></div>
+    <div class="freq"><span>Voix naturelles</span><b style="color:var(--amber)">À INTÉGRER</b></div>
+   </section>
+  </div>
+ </div>
+</main>
+<footer>REAL OPS CORE V0.1 · Prototype indépendant · Aucune connexion à MSFS 2024 à ce stade</footer>
+<script>
+const phases=[
+ {fr:"Parking",en:"Parked",speed:0,alt:0,freq:"121.700",
+  atc:[{fr:"REAL OPS SOL, Transavia 1234, au parking, demandons mise en route et repoussage.",en:"REAL OPS GROUND, Transavia 1234, parked at the stand, request start-up and pushback."},{fr:"Transavia 1234, bonjour, mise en route et repoussage approuvés, rappelez prêts au roulage.",en:"Transavia 1234, good day, start-up and pushback approved. Call when ready to taxi."}],
+  crew:[{fr:"On commence la préparation cockpit. Tu peux vérifier les documents et le briefing départ ?",en:"Let's start the cockpit preparation. Can you check the documents and departure briefing?"},{fr:"Bien reçu. Documents et briefing départ vérifiés.",en:"Roger. Documents and departure briefing checked."}],
+  cabin:{fr:"Bonjour à toutes et à tous, bienvenue à bord. Nous vous invitons à vous installer et à ranger vos bagages.",en:"Ladies and gentlemen, welcome on board. Please take your seats and stow your baggage."}},
+ {fr:"Roulage",en:"Taxi",speed:12,alt:0,freq:"121.700",
+  atc:[{fr:"REAL OPS SOL, Transavia 1234, prêts au roulage.",en:"REAL OPS GROUND, Transavia 1234, ready to taxi."},{fr:"Transavia 1234, roulez point d'attente piste 30R via le taxiway indiqué. Rappelez au point d'attente.",en:"Transavia 1234, taxi to holding point runway 30R via the assigned taxiway. Hold short and report."}],
+  crew:[{fr:"Cabine, nous débutons le roulage. Merci de confirmer la cabine prête.",en:"Cabin crew, we are commencing taxi. Please confirm the cabin is ready."},{fr:"Cabine prête, tous les passagers sont assis et les coffres fermés.",en:"Cabin ready, all passengers are seated and overhead bins are secured."}],
+  cabin:{fr:"Personnel cabine, préparez la cabine pour le départ. Vérifiez que les passagers sont assis et attachés.",en:"Cabin crew, prepare the cabin for departure. Check that passengers are seated and secured."}},
+ {fr:"Décollage",en:"Takeoff",speed:145,alt:0,freq:"118.700",
+  atc:[{fr:"REAL OPS TOUR, Transavia 1234, point d'attente piste 30R, prêt au départ.",en:"REAL OPS TOWER, Transavia 1234, holding point runway 30R, ready for departure."},{fr:"Transavia 1234, piste 30R, autorisé au décollage, vent calme.",en:"Transavia 1234, runway 30R, cleared for takeoff, wind calm."}],
+  crew:[{fr:"Piste dégagée, paramètres vérifiés. On y va.",en:"Runway clear, parameters checked. Let's go."},{fr:"V1… rotation… positif montée.",en:"V1… rotate… positive climb."}],
+  cabin:{fr:"Personnel cabine, armement des portes et vérification cabine pour le décollage.",en:"Cabin crew, doors to automatic and cabin secure for takeoff."}},
+ {fr:"Montée / croisière",en:"Climb / Cruise",speed:280,alt:35000,freq:"126.000",
+  atc:[{fr:"Transavia 1234, contactez le contrôle départ sur la fréquence assignée.",en:"Transavia 1234, contact departure control on the assigned frequency."},{fr:"Transavia 1234, radar identifié, poursuivez la montée niveau trois cinq zéro.",en:"Transavia 1234, radar identified, continue climb flight level three five zero."}],
+  crew:[{fr:"La montée est stable. On surveille la météo et les paramètres moteur.",en:"Climb is stable. Let's monitor the weather and engine indications."},{fr:"Paramètres normaux. Le briefing arrivée sera préparé avant la descente.",en:"All parameters normal. We will prepare the arrival briefing before descent."}],
+  cabin:{fr:"Mesdames et messieurs, nous avons atteint notre altitude de croisière. Vous pouvez détacher votre ceinture lorsque le signal est éteint.",en:"Ladies and gentlemen, we have reached our cruising altitude. You may unfasten your seatbelt when the sign is off."}},
+ {fr:"Approche",en:"Approach",speed:190,alt:5000,freq:"127.000",
+  atc:[{fr:"Transavia 1234, descendez 5 000 pieds, préparez l'approche, rappelez établis.",en:"Transavia 1234, descend to 5,000 feet, expect the approach, report established."},{fr:"Transavia 1234, contactez la tour sur 118.700 lorsque vous êtes établi en finale.",en:"Transavia 1234, contact tower on 118.700 when established on final."}],
+  crew:[{fr:"Briefing approche terminé. On vérifie la météo, la piste et la configuration.",en:"Approach briefing complete. Let's verify weather, runway and configuration."},{fr:"Approche briefée. Je surveille la vitesse et la stabilité.",en:"Approach briefed. I will monitor speed and stability."}],
+  cabin:{fr:"Personnel cabine, préparation cabine pour l'atterrissage. Vérifiez que tous les passagers sont assis et attachés.",en:"Cabin crew, prepare the cabin for landing. Check that all passengers are seated and secured."}},
+ {fr:"Atterrissage / parking",en:"Landing / Parked",speed:0,alt:0,freq:"121.700",
+  atc:[{fr:"Transavia 1234, piste dégagée, demandons le roulage vers le parking.",en:"Transavia 1234, runway vacated, request taxi to the stand."},{fr:"Transavia 1234, roulez vers le parking via le taxiway indiqué.",en:"Transavia 1234, taxi to the stand via the assigned taxiway."}],
+  crew:[{fr:"Atterrissage effectué. On libère la piste et on rejoint le parking.",en:"Landing complete. We are vacating the runway and taxiing to the stand."},{fr:"Bien reçu. Après l'arrêt, nous effectuerons la checklist parking.",en:"Understood. Once parked, we will complete the parking checklist."}],
+  cabin:{fr:"Bienvenue à destination. Veuillez rester assis jusqu'à l'arrêt complet de l'appareil et l'extinction du signal ceinture.",en:"Welcome to our destination. Please remain seated until the aircraft has come to a complete stop and the seatbelt sign is off."}}
+];
+let index=0;
+const $=id=>document.getElementById(id);
+function lang(){return $("language").value}
+function phase(){return phases[index]}
+function add(type,speaker,fr,en){
+ const item=document.createElement("div");item.className="msg "+type;
+ const label=lang()==="fr"?speaker:(speaker==="TOUR DE CONTRÔLE"?"AIR TRAFFIC CONTROL":speaker==="ÉQUIPAGE"?"FLIGHT CREW":speaker==="PERSONNEL CABINE"?"CABIN CREW":speaker);
+ const meta=document.createElement("div");meta.className="meta";
+ const who=document.createElement("span");who.className="speaker";who.textContent=label;
+ const time=document.createElement("span");time.textContent=new Date().toLocaleTimeString(lang()==="fr"?"fr-FR":"en-GB",{hour:"2-digit",minute:"2-digit"});
+ meta.append(who,time);
+ const p=document.createElement("p");p.textContent=lang()==="fr"?fr:en;
+ item.append(meta,p);$("feed").prepend(item);
+}
+function update(){
+ const p=phase();$("phaseMetric").textContent=lang()==="fr"?p.fr:p.en;
+ $("speedMetric").innerHTML=p.speed+' <small>kt</small>';$("altMetric").innerHTML=p.alt.toLocaleString()+' <small>ft</small>';$("freqMetric").textContent=p.freq;
+ [...$("phasebar").children].forEach((el,i)=>{el.className="phase"+(i<index?" done":i===index?" active":"")});
+}
+function atc(){let p=phase();add("", "TOUR DE CONTRÔLE", p.atc[0].fr, p.atc[0].en);add("", "TOUR DE CONTRÔLE", p.atc[1].fr, p.atc[1].en);}
+function crew(){let p=phase();add("crew", "ÉQUIPAGE", p.crew[0].fr, p.crew[0].en);add("crew", "ÉQUIPAGE", p.crew[1].fr, p.crew[1].en);}
+function cabin(){let p=phase();add("cabin", "PERSONNEL CABINE", p.cabin.fr, p.cabin.en);}
+$("nextBtn").onclick=()=>{if(index<phases.length-1)index++;update();add("","REAL OPS CORE",`Phase actualisée : ${phase().fr}.`,`Phase updated: ${phase().en}.`);};
+$("atcBtn").onclick=atc;$("crewBtn").onclick=crew;$("cabinBtn").onclick=cabin;
+$("resetBtn").onclick=()=>{index=0;$("feed").innerHTML="";update();add("","REAL OPS CORE","Session réinitialisée. Bon vol.","Session reset. Have a good flight.");};
+$("language").onchange=()=>{update();add("","REAL OPS CORE","Langue des communications modifiée.","Communications language changed.");};
+update();
+</script>
+</body></html>
